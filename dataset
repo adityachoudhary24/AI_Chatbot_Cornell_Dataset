@@ -1,0 +1,25 @@
+download_dataset.py
+
+# download_dataset.py
+import os
+import urllib.request
+import zipfile
+
+# Dataset URL
+url = "http://www.cs.cornell.edu/~cristian/data/cornell_movie_dialogs_corpus.zip"
+dataset_path = "data/cornell_movie_dialogs_corpus.zip"
+extract_path = "data/"
+
+# Download the dataset if it doesn't exist
+if not os.path.exists(dataset_path):
+    print("Downloading dataset...")
+    urllib.request.urlretrieve(url, dataset_path)
+    print("Download complete!")
+
+# Extract the dataset
+with zipfile.ZipFile(dataset_path, 'r') as zip_ref:
+    zip_ref.extractall(extract_path)
+    print("Dataset extracted to", extract_path)  
+
+
+  !python data/download_dataset.py
